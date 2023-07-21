@@ -1,0 +1,53 @@
+Muhamad_Galih H1D022052 B skylar
+/****************************************************************************************************
+ *      Perhatian !!!
+ *
+ *      Agar dapat diperiksa dengan baik, hindari beberapa hal berikut:
+ *
+ *      1. Mengubah kode yang berada di dalam fungsi main()
+ *      2. Mengubah atau menghapus kode yang sudah ada secara default
+ *      3. Membuat fungsi baru
+ *
+ ***************************************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+/*
+ * TODO 1
+ * Buatlah sebuah fungsi rekursif yang menerima sebuah bilangan bulat n
+ * dan mengembalikan bilangan fibonacci ke-n (urutan fibonacci dimulai dari 0).
+ */
+int fibonacci(int n) {
+    if (n <= 1)
+        return n;
+    else
+        return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+
+main() {
+    int n;
+    cin >> n;
+    cout << fibonacci(n);
+}
+CPU model: amd64
+CPU cores: 8
+OS type: windows
+Started at: 2023-06-06 13:59:55.0153342 +0700 +07
+Submitted at: 2023-06-06 14:10:28.6513347 +0700 +07 m=+0.041858601
+
+🧪 RUN [33m10[0m TEST CASE TO main-2.cpp
+⌛ Testing program ....                         
+[32m  ✓ PASS  Test 1 	[0m38.7958ms
+[32m  ✓ PASS  Test 2 	[0m8.1591ms
+[32m  ✓ PASS  Test 3 	[0m6.982ms
+[32m  ✓ PASS  Test 4 	[0m7.3039ms
+[32m  ✓ PASS  Test 5 	[0m8.8877ms
+[32m  ✓ PASS  Test 6 	[0m7.2892ms
+[32m  ✓ PASS  Test 7 	[0m7.5301ms
+[32m  ✓ PASS  Test 8 	[0m8.5307ms
+[32m  ✓ PASS  Test 9 	[0m6.91ms
+[32m  ✓ PASS  Test 10 	[0m6.6924ms
+
+[1mResult - [32m10 Passed |[31m 0 Failed |[33m 0 Error[0m

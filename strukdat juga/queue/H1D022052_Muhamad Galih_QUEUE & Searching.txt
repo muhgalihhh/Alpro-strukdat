@@ -1,0 +1,122 @@
+++======================================++
+||  Nama   = Muhamad Galih              ||
+||  NIM  = H1D022052                    ||
+||  Matkul = Praktikum Struktur Data B  ||
+||  Shift = B                           ||
+++======================================++
+
+
+
+QUEUE DAN SEARCHING BINARY
+
+
+
+Program Queue pada bahasa C :
+
+#include <stdio.h>
+#include <stdlib.h>
+#define MAXQUEUE 2
+typedef struct{
+    int count;
+    int front;
+    int rear;
+    int item[MAXQUEUE];
+}QUEUE;
+QUEUE antrian;
+void inisialisasi(QUEUE *Q){
+    Q->count=0;
+    Q->front=0;
+    Q->rear=0;
+}
+int isEmpty(QUEUE *Q){
+    int hasil=0;
+    if(Q->count==0){
+        hasil=1;
+    }
+    return hasil;
+}
+
+int isFull(QUEUE *Q){
+    int hasil=0;
+    if(Q->count==MAXQUEUE){
+        hasil=1;
+    }
+    return hasil;
+}
+void insert(QUEUE *Q, int data){
+    if(isFull(&antrian)==1){
+        printf("maaf sudah full");
+    }else{
+        Q->item[Q->rear]=data;
+        Q->rear=(Q->rear+1)%MAXQUEUE;
+        ++(Q->count);
+    }
+}
+main(){
+    inisialisasi(&antrian);
+    printf("masukan 3\n");
+    insert(&antrian, 3);
+    printf("masukan 6\n");
+    insert(&antrian, 6);
+}
+
+1. Jelaskan apa yang dimaksud dengan queue?
+ANSWER:
+   	Queue (antrian) adalah struktur data yang digunakan untuk menyimpan elemen 
+   	atau item dalam urutan tertentu, di mana elemen pertama yang ditambahkan ke dalam 
+   	antrian adalah elemen pertama yang dihapus dari antrian. Dalam struktur data antrian, 
+   	elemen-elemen ditambahkan pada satu ujung (ujung belakang) dan dihapus pada ujung 
+   	yang berlawanan (ujung depan). Oleh karena itu, antrian juga dikenal sebagai struktur 
+   	data "first-in, first-out" atau "FIFO".
+
+2. Sebutkan variabel pointer yang terdapat pada program beserta fungsinya!
+ANSWER:
+
+  	`QUEUE *Q`: 
+	Variabel pointer ini digunakan pada fungsi `inisialisasi()`, 
+	`isEmpty()`, `isFull()`, dan `insert()`. Pointer ini bertipe `QUEUE`, 
+	sehingga digunakan untuk menunjuk atau mengakses struktur data `QUEUE`. 
+	Fungsinya adalah untuk memudahkan akses dan manipulasi terhadap 
+	variabel-variabel yang terdapat pada struktur data `QUEUE`.
+	`&antrian`: 
+	Variabel pointer ini digunakan pada fungsi `insert()`, sebagai argumen 
+	pertama (pointer ke `QUEUE`), untuk memastikan bahwa data yang di-insert 
+	ke antrian merupakan data yang terdapat pada variabel `antrian`. Fungsinya 
+	adalah untuk memastikan bahwa operasi-insert dilakukan pada variabel `antrian` 
+	yang telah diinisialisasi sebelumnya.
+
+3. Tuliskan luaran program?
+ANSWER:
+
+   Output:
+
+	masukan 3
+	masukan 6
+
+4. Jelaskan fungsi insert pada program : 
+ANSWER :
+   Pertama-tama, fungsi insert() akan memeriksa apakah antrian sudah penuh atau belum, 
+   dengan memanggil fungsi isFull().
+
+   Jika antrian sudah penuh, maka fungsi insert() akan mencetak pesan "maaf sudah full" 
+   dan tidak melakukan operasi-insert.
+
+   Jika antrian masih belum penuh, maka data akan dimasukkan ke dalam antrian. Langkah ini 
+   dilakukan dengan menambahkan data ke posisi rear pada antrian (Q->item[Q->rear]=data), 
+   dan mengubah nilai rear menjadi rear+1 (dengan menggunakan operasi modulus % agar rear tetap 
+   berada dalam range 0 hingga MAXQUEUE-1). Selanjutnya, jumlah elemen dalam antrian (count) akan 
+   ditambahkan satu.
+
+5. Ilustrasikan proses yang terjadi pada main :
+   - Gambar terlampir di gform.
+
+
+Halaman 21
+
+1. Luaran :
+
+ARRAY: [1] [2] [3] [4] [5] [6] [7] [8] [9] [10]
+Nomor yang akan dicari: 4
+* Ketemu *
+
+2. Tabel iterasi terlampir pada file excel gform

@@ -1,0 +1,129 @@
+Muhamad_Galih H1D022052 B 40513
+/* RESPONSI 1 STRUKTUR DATA
+ * PAKET 4 STACK
+ */
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+#define MAX 50
+
+//Struktur data stack
+typedef struct stack {
+    char item[MAX];
+    int count;
+} Stack;
+Stack tumpukan;
+
+//  Method inisialisasi stack
+void inisialisasi(Stack * x) {
+    x->count = 0;
+}
+
+// Method pengecekan apakah stack kosong
+int isEmpty(Stack * x) {
+    if (x->count == 0) {
+        return 1;
+    }
+    return 0;
+}
+//
+// Method pengecekan apakah stack penuh
+int isFull(Stack * x) {
+    if (x->count == MAX) {
+        return 1;
+    }
+    return 0;
+}
+
+// Method push data ke stack
+void push(Stack * x, char data) {
+    if (!isFull(x)) {
+        x->item[(x->count)++] = data;
+    }
+}
+
+// Fungsi pop dari stack
+// Fungsi ini akan mengembalikan data paling atas/akhir stack
+char pop(Stack * x) {
+    char y = 0;
+    if (!isEmpty(x)) {
+        y = x->item[--(x->count)];
+        x->item[x->count] = 0;
+    }
+    return y;
+}
+
+// Method pengecekan
+int cek(string deret_kurung) {
+  int seimbang = 1;
+  for (char x : deret_kurung) {
+    /* == TODO ==
+    * Lengkapi for loop dari fungsi cek ini!
+    * - Fungsi ini menerima sebuah argumen string berupa deret tanda kurung
+    * - Fungsi ini akan mengembalikan 0 (apabila deret kurung tidak seimbang) dan 1 (apabila deret kurung seimbang)
+    * - For loop ini akan mengakses satu per satu karakter pada string deret kurung dan menyimpannya di variabel x
+    */
+   if (x == '(' || x == '[' || x == '{') {
+      push(&tumpukan, x);
+    } else if (x == ')' || x == ']' || x == '}') {
+      if (isEmpty(&tumpukan)) {
+        seimbang = 0;
+      } else {
+        char y = pop(&tumpukan);
+        if ((x == ')' && y != '(') || (x == ']' && y != '[') || (x == '}' && y != '{')) {
+          seimbang = 0;
+        }
+      }
+    }
+
+  }
+
+  if (!isEmpty(&tumpukan)) seimbang = 0; // Apabila pada akhirnya stack tidak kosong, maka deret kurung tidak seimbang
+
+  return seimbang;
+}
+
+int main() {
+  /* == PERINGATAN ==
+   * Kamu tidak perlu mengubah isi method main ini.
+   * Kamu hanya perlu mengisi blok kode yang bertuliskan TODO saja.
+   */
+
+
+  inisialisasi(&tumpukan);
+
+  string x;
+  cin >> x;
+
+  if (cek(x)) {
+    cout << "SUDAH SEIMBANG" << endl;
+  } else {
+    cout << "BELUM SEIMBANG" << endl;
+  }
+
+  return 0;
+}
+
+CPU model: amd64
+CPU cores: 8
+OS type: windows
+Started at: 2023-05-02 13:50:23.8921554 +0700 +07
+Submitted at: 2023-05-02 14:38:41.7011874 +0700 +07 m=+0.042027301
+
+🧪 RUN [33m10[0m TEST CASE TO main-4.cpp
+⌛ Testing program ....                         
+[32m  ✓ PASS  Test 1 	[0m28.6557ms
+[32m  ✓ PASS  Test 2 	[0m7.7178ms
+[32m  ✓ PASS  Test 3 	[0m1.6623ms
+[32m  ✓ PASS  Test 4 	[0m6.1629ms
+[32m  ✓ PASS  Test 5 	[0m6.336ms
+[32m  ✓ PASS  Test 6 	[0m7.2283ms
+[32m  ✓ PASS  Test 7 	[0m7.3015ms
+[32m  ✓ PASS  Test 8 	[0m6.3775ms
+[32m  ✓ PASS  Test 9 	[0m6.2854ms
+[32m  ✓ PASS  Test 10 	[0m7.2657ms
+
+[1mResult - [32m10 Passed |[31m 0 Failed |[33m 0 Error[0m
